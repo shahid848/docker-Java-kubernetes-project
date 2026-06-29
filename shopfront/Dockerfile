@@ -1,7 +1,9 @@
-FROM eclipse-temurin:8-jre-jammy
+FROM eclipse-temurin:21-jre
 
-ADD target/shopfront-0.0.1-SNAPSHOT.jar app.jar
+WORKDIR /app
+
+COPY target/shopfront-0.0.1-SNAPSHOT.jar app.jar
 
 EXPOSE 8010
 
-ENTRYPOINT ["java","-Djava.security.egd=file:/dev/./urandom","-jar","/app.jar"]
+ENTRYPOINT ["java","-jar","app.jar"]
